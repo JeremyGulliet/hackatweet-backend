@@ -11,7 +11,7 @@ const bcrypt = require('bcrypt');
 
 router.post('/signin', (req, res) => {
   //Si les informations entrées ne correspondent pas ou sont manquantes, on retourne False
-  if (!checkBody(req.body, ['firstname', 'username', 'password'])) {
+  if (!checkBody(req.body, ['username', 'password'])) {
     res.json({ result: false, error: 'Missing or empty fields' });
     return;
   }
