@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
 router.post('/:token', (req, res) => {
     User.findOne({ token: req.params.token })
         .then(data => {
+            console.log(data);
             if (data) {
                 const newTweet = new Tweet({
                     user: data.id,
@@ -33,7 +34,7 @@ router.post('/:token', (req, res) => {
                     likes: [],
                 });
                 newTweet.save().then(data => {
-                    res.json({ result: true, user: data.user })
+                    res.json({ result: true, tweet: data })
                 });
 
             } else {
